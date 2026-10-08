@@ -41,7 +41,7 @@ _ADDITIONAL_PRODUCTION_KEY = "additional-production"
 
 
 def _is_disabled_by_integration(entity_entry: Any) -> bool:
-    """True when HA disabled the entity via entity_registry_enabled_default."""
+    """Return True when HA disabled the entity via entity_registry_enabled_default."""
     disabled_by = entity_entry.disabled_by
     if disabled_by is None:
         return False
@@ -75,8 +75,6 @@ async def _async_enable_additional_production_if_present(
             entity_entry.entity_id,
         )
         ent_reg.async_update_entity(entity_entry.entity_id, disabled_by=None)
-
-
 
 
 async def async_migrate_entry(hass, config_entry: ConfigEntry):
